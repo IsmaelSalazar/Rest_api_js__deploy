@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import productsRoutes from './routes/products.routes';
 import clientsRoutes from './routes/clients.routes';
+import invoicesRoutes from './routes/invoices.routes';
+import usersRoutes from './routes/invoices.routes';
 const app = express();
 
 //settings
@@ -21,5 +23,6 @@ app.get('/', (req, res) => {
 app.use('/api/products', productsRoutes);
 app.use('/api/clients', clientsRoutes);
 app.use('/api/invoices', invoicesRoutes);
+app.use('/api/users', usersRoutes)
 
 export default app;

@@ -11,11 +11,10 @@ export const postInvoices = async (req, res) => {
     }
     try {
         const newInvoice = new Invoice({
-          name: req.body.name,
-          description: req.body.products,
-          IVA: req.body.IVA,
-          total: req.body.total,
-          total: (req.body.total = req.body.IVA + req.body.total),
+        name: req.body.name,
+        product: req.body.products,
+        IVA: (0.12 * req.body.total),
+        total: req.body.total,
         });
         const InvoiceSave = await newInvoice.save();
         res.json(InvoiceSave);
@@ -80,10 +79,8 @@ export const putInvoice = async (req, res) => {
       $set: {
         name: req.body.name,
         product: req.body.products,
-        IVA: req.body.IVA,
+        IVA: (0.12 * req.body.total),
         total: req.body.total,
-        ///IVA: (req.body.IVA =)
-        total: (req.body.total = req.body.IVA + req.body.total),
       },
     });
     if (!invoice)
